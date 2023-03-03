@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "writery",
+  "version": "${version}",
+  "name": "Writery",
+  "description": "Nice library to simplify mod development",
+  "authors": [
+    "dev_cube"
+  ],
+  "contact": {
+    "website": "https://github.com/dever-cube/wrytery",
+    "repo": "https://github.com/dever-cube/wrytery"
+  },
+  "license": "MIT",
+  "icon": "assets/wrytery/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "net.devcube.writery.client.WriteryClient"
+    ],
+    "main": [
+      "net.devcube.writery.Writery"
+    ]
+  },
+  "mixins": [
+    "writery.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.17",
+    "fabric": "*",
+    "minecraft": "1.19.3"
+  }
+}
