@@ -1,6 +1,9 @@
 package net.devcube.writery.item;
 
+import net.fabricmc.fabric.api.item.v1.EquipmentSlotProvider;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.block.Block;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -28,7 +31,24 @@ public class ItemProvider {
                 new Item(settings));
     }
 
+    public static void createBlockItem(String modId, String name, Block block){
+        Registry.register(Registries.ITEM, new Identifier(modId, name),
+                new BlockItem(block, new FabricItemSettings()));
+    }
+
     public static Item createIngredientItem(String modID, String name) throws IllegalArgumentException{
         return createItem(modID, name, new FabricItemSettings());
+    }
+
+
+
+    public static Item createIngredientItem(String modID, String name, int stackSize) throws IllegalArgumentException{
+        if(stackSize == 0)
+            throw new IllegalArgumentException("Stack size can't be zero");
+
+        FabricItemSettings settings = new FabricItemSettings()
+                .maxCount(stackSize);
+
+        return createItem(modID, name, settings);
     }
 }
